@@ -11,12 +11,12 @@ public class CartTest extends BaseTest {
 
     @BeforeMethod
     public void login() {
-        new LoginPage(driver).login("standard_user", "secret_sauce");
+        new LoginPage(driver()).login("standard_user", "secret_sauce");
     }
 
     @Test(description = "Adding a product updates the cart badge")
     public void addSingleProductUpdatesCart() {
-        InventoryPage inventory = new InventoryPage(driver);
+        InventoryPage inventory = new InventoryPage(driver());
 
         inventory.addToCart("Sauce Labs Backpack");
 
@@ -26,7 +26,7 @@ public class CartTest extends BaseTest {
 
     @Test(description = "Adding two products updates the cart badge to 2")
     public void addTwoProductsUpdatesCart() {
-        InventoryPage inventory = new InventoryPage(driver);
+        InventoryPage inventory = new InventoryPage(driver());
 
         inventory.addToCart("Sauce Labs Backpack");
         inventory.addToCart("Sauce Labs Bike Light");

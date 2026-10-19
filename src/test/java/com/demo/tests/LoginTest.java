@@ -10,7 +10,7 @@ public class LoginTest extends BaseTest {
 
     @Test(description = "Standard user logs in and lands on the inventory page")
     public void standardUserCanLogin() {
-        InventoryPage inventory = new LoginPage(driver)
+        InventoryPage inventory = new LoginPage(driver())
                 .login("standard_user", "secret_sauce");
 
         Assert.assertEquals(inventory.getTitle(), "Products",
@@ -19,7 +19,7 @@ public class LoginTest extends BaseTest {
 
     @Test(description = "Locked-out user sees an error message")
     public void lockedOutUserSeesError() {
-        LoginPage login = new LoginPage(driver);
+        LoginPage login = new LoginPage(driver());
         login.login("locked_out_user", "secret_sauce");
 
         Assert.assertTrue(login.isErrorVisible(),

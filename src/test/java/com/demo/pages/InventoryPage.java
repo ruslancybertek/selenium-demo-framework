@@ -27,11 +27,13 @@ public class InventoryPage {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(title)).getText();
     }
 
-    public void addToCart(String productName) {
-        // SauceDemo data-test ids look like: add-to-cart-sauce-labs-backpack
-        String slug = productName.toLowerCase().replaceAll("[^a-z0-9]+", "-");
-        driver.findElement(By.cssSelector("[data-test='add-to-cart-" + slug + "']")).click();
-    }
+  public void addToCart(String productName) {
+    // SauceDemo data-test ids look like: add-to-cart-sauce-labs-backpack
+    String slug = productName.toLowerCase().replaceAll("[^a-z0-9]+", "-");
+    By addButton = By.cssSelector("[data-test='add-to-cart-" + slug + "']");
+    wait.until(ExpectedConditions.elementToBeClickable(addButton)).click();
+}
+
 
     public String getCartCount() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(cartBadge)).getText();
